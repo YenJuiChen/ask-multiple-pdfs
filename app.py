@@ -66,8 +66,8 @@ def handle_userinput(user_question):
 
 def main():
     load_dotenv()
-    st.set_page_config(page_title="Chat with multiple PDFs",
-                       page_icon=":books:")
+    st.set_page_config(page_title="YenJuiChen_PDF專家系統",
+                       page_icon="\u2600")
     st.write(css, unsafe_allow_html=True)
 
     if "conversation" not in st.session_state:
@@ -75,17 +75,17 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    st.header("Chat with multiple PDFs :books:")
-    user_question = st.text_input("Ask a question about your documents:")
+    st.header("YenJuiChen_PDF專家系統 \u2600")
+    user_question = st.text_input("輸入問題:")
     if user_question:
         handle_userinput(user_question)
 
     with st.sidebar:
-        st.subheader("Your documents")
+        st.subheader("你的檔案")
         pdf_docs = st.file_uploader(
-            "Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
-        if st.button("Process"):
-            with st.spinner("Processing"):
+            "上傳檔案並點擊 '運行'", accept_multiple_files=True)
+        if st.button("運行"):
+            with st.spinner("運行中"):
                 # get pdf text
                 raw_text = get_pdf_text(pdf_docs)
 
