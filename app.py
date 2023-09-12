@@ -52,6 +52,10 @@ def get_conversation_chain(vectorstore):
 
 
 def handle_userinput(user_question):
+    if st.session_state.conversation is None:
+        st.write("對話系統還未初始化。請先上傳PDF文件並點擊 '運行'。")
+        return
+
     response = st.session_state.conversation({'question': user_question})
     st.session_state.chat_history = response['chat_history']
 
